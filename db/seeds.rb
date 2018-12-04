@@ -1,7 +1,8 @@
 require 'open-uri'
 
 Movie.destroy_all
-User.find_by_email("quentin.tarantino@gmail.com").destroy
+User.destroy_all
+
 
 user = User.create!(email: "quentin.tarantino@gmail.com", password: "123456")
 
