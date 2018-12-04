@@ -4,7 +4,14 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = policy_scope(Movie).all
+    @movies = policy_scope(Movie).order(created_at: :asc)
+  end
+
+  def top
+
+    @movies = Movie.order(rank: :asc)
+    render :index
+    authorize @movies
   end
 
   # GET /movies/1

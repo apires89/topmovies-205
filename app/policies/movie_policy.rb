@@ -10,11 +10,11 @@ class MoviePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || user_is_admin?
   end
 
   def edit?
-    record.user == user
+    record.user == user || user_is_admin?
   end
 
   def show?
@@ -22,6 +22,17 @@ class MoviePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    record.user == user || user_is_admin?
   end
+
+  def top?
+    true
+  end
+
+  private
+
+  def user_is_admin?
+    user.admin == true
+  end
+
 end
