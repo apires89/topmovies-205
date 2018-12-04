@@ -13,7 +13,7 @@ movies = JSON.parse(open(url).read)
 movies.take(20).each do |movie|
   Movie.create!(
     user: user,
-    title: movie["title"],
+    name: movie["title"],
     rank: movie["rank"]
   )
 end
